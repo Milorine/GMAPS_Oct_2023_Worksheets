@@ -52,13 +52,15 @@ public class HVector2D
 
     // public float Magnitude()
     // {
-
+        
     // }
 
-    // public void Normalize()
-    // {
-
-    // }
+    public void Normalize()
+    {
+        float mag = Magnitude();
+        x /= mag;
+        y /= mag;
+    }
 
     // public float DotProduct(/*???*/)
     // {
@@ -77,7 +79,7 @@ public class HVector2D
 
     public Vector2 ToUnityVector2()
     {
-        return new Vector3(x,y); // change this
+        return new Vector2(x,y); // change this
     }
 
     public Vector3 ToUnityVector3()

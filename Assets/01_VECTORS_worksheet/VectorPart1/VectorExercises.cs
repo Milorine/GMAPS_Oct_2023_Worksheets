@@ -12,7 +12,7 @@ public class VectorExercises : MonoBehaviour
     private Vector2 endPt;
 
     public float GameWidth, GameHeight;
-    private float minX, minY, maxX, maxY;
+    private float minX, minY, maxX, maxY, minZ, maxZ;
 
     private void Start()
     {
@@ -36,55 +36,77 @@ public class VectorExercises : MonoBehaviour
 
     public void CalculateGameDimensions()
     {
-        //asd
-        //asdsava
+        GameHeight = Camera.main.orthographicSize * 2f;
+        GameWidth = Camera.main.aspect * GameHeight;
+
+        maxX = GameWidth / 2;
+        maxY = GameHeight / 2;
+        minX = -maxX;
+        minY = -maxY;
     }
 
     void Question2a()
     {
+        startPt = new Vector2(0, 0);
+        endPt = new Vector2(2, 3);
 
+        drawnLine = lineFactory.GetLine(startPt, endPt,
+                                               0.02f, Color.black);
+        drawnLine.EnableDrawing(true);
+
+        Vector2 vec2 = endPt - startPt;
+        Debug.Log("Magnitude = " + vec2.magnitude);
     }
 
     void Question2b(int n)
     {
-
+        for (int i = 0; i < n; i++)
+        {   
+            maxX = n;
+            maxY = n;
+            startPt = new Vector2(Random.Range(-maxX, maxX),Random.Range(-maxY, maxY));
+            endPt = new Vector2(Random.Range(-maxX, maxX),Random.Range(-maxY, maxY));
+            drawnLine = lineFactory.GetLine(startPt, endPt,
+                                               0.02f, Color.black);
+            drawnLine.EnableDrawing(true);
+        }
     }
 
     void Question2d()
     {
-
+        DebugExtension.DebugArrow(
+            new Vector3(0, 0, 0),
+            new Vector3(5, 5, 0),
+            Color.red,
+            60f);
     }
 
     void Question2e(int n)
     {
         for (int i = 0; i < n; i++)
-        {
-            startPt = new Vector2(
-                Random.Range(-maxX, maxX), 
-                Random.Range(-maxY, maxY));
+        {   
+            maxX = n;
+            maxY = n;
+            maxZ =n;
 
-            // Your code here
-            // ...
-
-            //DebugExtension.DebugArrow(
-            //    new Vector3(0, 0, 0),
-            //    // Your code here,
-            //    Color.white,
-            //    60f);
-        }  
+            DebugExtension.DebugArrow(
+                new Vector3(0, 0, 0),
+                new Vector3(Random.Range(-maxX, maxX), Random.Range(-maxY, maxY), Random.Range(-maxZ, maxZ)),
+                Color.white,
+                60f);
+        }
     }
 
     public void Question3a()
     {
         HVector2D a = new HVector2D(3, 5);
-        //HVector2D b = // Your code here;
-        //HVector2D c = // Your code here;
+        HVector2D b = new HVector2D(-4, 2);
+        HVector2D c = a + b;
+        
 
         DebugExtension.DebugArrow(Vector3.zero, a.ToUnityVector3(), Color.red, 60f);
-        // Your code here
-        // ...
-
-        // Your code here
+        DebugExtension.DebugArrow(Vector3.zero, b.ToUnityVector3(), Color.green, 60f);
+        DebugExtension.DebugArrow(Vector3.zero, c.ToUnityVector3(), Color.white, 60f);
 
         //Debug.Log("Magnitude of a = " + // Your code here.ToString("F2"));
         // Your code here

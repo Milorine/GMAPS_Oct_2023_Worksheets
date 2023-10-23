@@ -30,25 +30,25 @@ public class HVector2D
         h = 1.0f;
     }
 
-    // public static HVector2D operator +( /*???*/)
-    // {
+    public static HVector2D operator +(HVector2D a, HVector2D b)
+    {
+        return new HVector2D(a.x + b.x, a.y + b.y);
+    }
 
-    // }
+    public static HVector2D operator -(HVector2D a, HVector2D b)
+    {
+        return new HVector2D(a.x - b.x, a.y - b.y);
+    }
 
-    // public static HVector2D operator -(/*???*/)
-    // {
+    public static HVector2D operator *(HVector2D a, HVector2D b)
+    {
+        return new HVector2D(a.x * b.x, a.y * b.y);
+    }
 
-    // }
-
-    // public static HVector2D operator *(/*???*/)
-    // {
-
-    // }
-
-    // public static HVector2D operator /(/*???*/)
-    // {
-
-    // }
+    public static HVector2D operator /(HVector2D a, HVector2D b)
+    {
+        return new HVector2D(a.x / b.x, a.y / b.y);
+    }
 
     // public float Magnitude()
     // {
@@ -77,12 +77,12 @@ public class HVector2D
 
     public Vector2 ToUnityVector2()
     {
-        return Vector2.zero; // change this
+        return new Vector3(x,y); // change this
     }
 
     public Vector3 ToUnityVector3()
     {
-        return Vector2.zero; // change this
+        return new Vector3(x,y,h); // change this
     }
 
     // public void Print()

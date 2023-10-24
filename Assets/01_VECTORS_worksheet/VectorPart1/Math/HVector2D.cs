@@ -40,14 +40,14 @@ public class HVector2D
         return new HVector2D(a.x - b.x, a.y - b.y);
     }
 
-    public static HVector2D operator *(HVector2D a, HVector2D b)
+    public static HVector2D operator *(HVector2D a, float scalar)
     {
-        return new HVector2D(a.x * b.x, a.y * b.y);
+        return new HVector2D(a.x * scalar, a.y * scalar);
     }
 
-    public static HVector2D operator /(HVector2D a, HVector2D b)
+    public static HVector2D operator /(HVector2D a, float scalar)
     {
-        return new HVector2D(a.x / b.x, a.y / b.y);
+        return new HVector2D(a.x / scalar, a.y / scalar);
     }
 
     public float Magnitude()
@@ -62,20 +62,21 @@ public class HVector2D
         y /= mag;
     }
 
-    // public float DotProduct(/*???*/)
-    // {
+    public float DotProduct(HVector2D vec)
+    {
+        return (x * vec.x + y * vec.y);
+    }
 
-    // }
+    public HVector2D Projection(HVector2D b)
+    {
+        HVector2D proj = b * (DotProduct(b) / b.DotProduct(b));
+        return proj;
+    }
 
-    // public HVector2D Projection(/*???*/)
-    // {
-
-    // }
-
-    // public float FindAngle(/*???*/)
-    // {
-
-    // }
+    public float FindAngle(HVector2D vec)
+    {
+        return (float)Mathf.Acos(DotProduct(vec) / (Magnitude() * vec.Magnitude()));
+    }
 
     public Vector2 ToUnityVector2()
     {

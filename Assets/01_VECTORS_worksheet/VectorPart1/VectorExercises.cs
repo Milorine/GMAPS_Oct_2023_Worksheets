@@ -102,17 +102,20 @@ public class VectorExercises : MonoBehaviour
         HVector2D a = new HVector2D(3, 5);
         HVector2D b = new HVector2D(-4, 2);
         HVector2D c = a + b;
+        HVector2D d = a - b;
+        Vector2 veca = new Vector2(a.x, a.y);
+        Vector2 vecb = new Vector2(b.x, b.y);
+        Vector2 vecc = new Vector2(c.x, c.y);
 
-        
 
         DebugExtension.DebugArrow(Vector3.zero, a.ToUnityVector3(), Color.red, 60f);
         DebugExtension.DebugArrow(Vector3.zero, b.ToUnityVector3(), Color.green, 60f);
         DebugExtension.DebugArrow(Vector3.zero, c.ToUnityVector3(), Color.white, 60f);
-        DebugExtension.DebugArrow(Vector3, b.ToUnityVector3(), Color.green, 60f);
-
-        //Debug.Log("Magnitude of a = " + // Your code here.ToString("F2"));
-        // Your code here
-        // ...
+        DebugExtension.DebugArrow(a.ToUnityVector3(), -b.ToUnityVector3(), Color.green, 60f);
+        DebugExtension.DebugArrow(Vector3.zero, d.ToUnityVector3(), Color.white, 60f);
+        Debug.Log("Magnitude of a = " + veca.magnitude.ToString("F2"));
+        Debug.Log("Magnitude of b = " + vecb.magnitude.ToString("F2"));
+        Debug.Log("Magnitude of c = " + vecc.magnitude.ToString("F2"));
     }
 
     public void Question3b()

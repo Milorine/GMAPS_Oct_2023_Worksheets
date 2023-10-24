@@ -50,10 +50,10 @@ public class HVector2D
         return new HVector2D(a.x / b.x, a.y / b.y);
     }
 
-    // public float Magnitude()
-    // {
-        
-    // }
+    public float Magnitude()
+    {
+        return(float)Mathf.Sqrt(x * x + y * y);
+    }
 
     public void Normalize()
     {

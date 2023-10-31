@@ -10,6 +10,7 @@ public class Mario : MonoBehaviour
 
     private Vector3 gravityDir, gravityNorm;
     private Vector3 moveDir;
+    private Vector3 lineDir;
     private Rigidbody2D rb;
 
     void Start()
@@ -22,18 +23,20 @@ public class Mario : MonoBehaviour
         gravityDir = planet.transform.position - transform.position;
         moveDir = new Vector3(gravityDir.y, gravityDir.x * -1, 0f);
         moveDir = moveDir.normalized * -1f;
+        lineDir = new Vector3(0f, -2f, 0f);
 
         rb.AddForce(moveDir * force);
 
         gravityNorm = gravityDir.normalized;
         rb.AddForce(gravityNorm * gravityStrength);
 
-        float angle = Vector3.SignedAngle(gravityDir, moveDir, Vector3.forward);
+        float angle = Vector3.SignedAngle(lineDir, gravityDir, Vector3.forward);
 
-        rb.MoveRotation(Quaternion.Euler(angle, 0f, 0f));
+        rb.MoveRotation(Quaternion.Euler(0f, 0f, angle));
         
-        DebugExtension.DebugArrow(Vector3.zero, gravityDir, Color.red, 60f);
-        DebugExtension.DebugArrow(Vector3.zero, moveDir, Color.blue, 60f);
+        DebugExtension.DebugArrow(transform.position, gravityDir, Color.red);
+        DebugExtension.DebugArrow(transform.position, moveDir, Color.blue);
+        DebugExtension.DebugArrow(Vector3.zero, lineDir, Color.black);
         
     }
 }

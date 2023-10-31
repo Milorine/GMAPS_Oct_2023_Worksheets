@@ -453,7 +453,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   planet: {fileID: 25543976}
   force: 5
-  gravityStrength: 4
+  gravityStrength: 5
 --- !u!50 &1602136179
 Rigidbody2D:
   serializedVersion: 4
@@ -498,7 +498,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1602136174}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5c32b138b1f2f6e41a1ffee8a6dbfee3, type: 3}
   m_Name: 

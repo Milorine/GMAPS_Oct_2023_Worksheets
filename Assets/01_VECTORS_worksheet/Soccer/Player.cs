@@ -70,6 +70,7 @@ public class Player : MonoBehaviour
     {
         if (IsCaptain)
         {
+            DebugExtension.DebugArrow(OtherPlayer.transform.position, OtherPlayer.transform.position, Color.black, 60f);
             //float angle = // Your code here
             //Debug.Log(angle);
         }

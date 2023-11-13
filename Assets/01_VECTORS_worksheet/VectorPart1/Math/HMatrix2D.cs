@@ -116,18 +116,24 @@
 //         return new HMatrix2D
 //         (
 // 	    /* 
-//             00 01 02    00 xx xx
-//             xx xx xx    10 xx xx
-//             xx xx xx    20 xx xx
+//             00 01 02    00 x1 x2
+//             1x 11 12    10 11 12
+//             2x 21 22    20 xx xx
 //             */
 //             left.Entries[0, 0] * right.Entries[0, 0] + left.Entries[0, 1] * right.Entries[1, 0] + left.Entries[0, 2] * right.Entries[2, 0],
-
 // 	    /* 
 //             00 01 02    xx 01 xx
 //             xx xx xx    xx 11 xx
 //             xx xx xx    xx 21 xx
 //             */
 //             left.Entries[0, 0] * right.Entries[0, 1] + left.Entries[0, 1] * right.Entries[1, 1] + left.Entries[0, 2] * right.Entries[2, 1],
+//             left.Entries[0, 0] * right.Entries[0, 2] + left.Entries[0, 1] * right.Entries[1, 2] + left.Entries[0, 2] * right.Entries[2, 2],
+//             left.Entries[1, 0] * right.Entries[0, 0] + left.Entries[1, 1] * right.Entries[1, 0] + left.Entries[1, 2] * right.Entries[2, 0],
+//             left.Entries[1, 0] * right.Entries[0, 1] + left.Entries[1, 1] * right.Entries[1, 1] + left.Entries[1, 2] * right.Entries[2, 1],
+//             left.Entries[1, 0] * right.Entries[0, 2] + left.Entries[1, 1] * right.Entries[1, 2] + left.Entries[1, 2] * right.Entries[2, 2],
+//             left.Entries[2, 0] * right.Entries[0, 0] + left.Entries[2, 1] * right.Entries[1, 0] + left.Entries[2, 2] * right.Entries[2, 0],
+//             left.Entries[2, 0] * right.Entries[0, 1] + left.Entries[2, 1] * right.Entries[1, 1] + left.Entries[2, 2] * right.Entries[2, 1],
+//             left.Entries[2, 0] * right.Entries[0, 2] + left.Entries[2, 1] * right.Entries[1, 2] + left.Entries[2, 2] * right.Entries[2, 2],
 
 // 	    // and so on for another 7 entries
 // 	);
@@ -135,12 +141,35 @@
 
 //     public static bool operator ==(HMatrix2D left, HMatrix2D right)
 //     {
-//         // your code here
+//         for (int i = 0; i < left.entries.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < left.entries.GetLength(1); j++)
+//         {
+//             if (left.entries[i, j] != right.entries[i, j])
+//             {
+//                 return false;
+//             }
+//         }
+//     }
+//     return true;
 //     }
 
 //     public static bool operator !=(HMatrix2D left, HMatrix2D right)
 //     {
-//         // your code here
+//         for (int i = 0; i < left.entries.GetLength(0); i++)
+//     {
+//         for (int j = 0; j < left.entries.GetLength(1); j++)
+//         {
+//             if (left.entries[i, j] != right.entries[i, j])
+//             {
+//                 // Found a mismatched element, consider matrices not equal.
+//                 return true;
+//             }
+//         }
+//     }
+
+//     // All elements match, consider matrices equal.
+//     return false;
 //     }
 
 //     public override bool Equals(object obj)

@@ -207,7 +207,7 @@ public class HMatrix2D
     };
    }
 
-   public void SetTranslationMat(float transX, float transY)
+   public void SetTranslationMatrix(float transX, float transY)
    {
        entries = new float[,]
     {
@@ -217,7 +217,7 @@ public class HMatrix2D
     };
    }
 
-   public void SetRotationMat(float rotDeg)
+   public void SetRotationMatrix(float rotDeg)
    {
        SetIdentity();
         float rad = rotDeg * (float)Math.PI / 180.0f;
@@ -230,7 +230,7 @@ public class HMatrix2D
         entries[1, 1] = cosTheta;
    }
 
-   public void SetScalingMat(float scaleX, float scaleY)
+   public void SetScalingMatrix(float scaleX, float scaleY)
    {
        entries = new float[,]
     {
@@ -253,4 +253,47 @@ public class HMatrix2D
        }
        Debug.Log(result);
    }
+   public override bool Equals(object obj)
+    {
+        if (obj is HMatrix2D otherMatrix)
+        {
+            if (ReferenceEquals(this, otherMatrix))
+                return true;
+
+            if (entries.GetLength(0) != otherMatrix.entries.GetLength(0) || entries.GetLength(1) != otherMatrix.entries.GetLength(1))
+                return false;
+
+            for (int i = 0; i < entries.GetLength(0); i++)
+            {
+                for (int j = 0; j < entries.GetLength(1); j++)
+                {
+                    if (entries[i, j] != otherMatrix.entries[i, j])
+                        return false;
+                }
+            }
+
+            return true;
+        }
+
+        return false;
+    }
+
+    public override int GetHashCode()
+    {
+        int hash = 17; // You can choose any prime number as the initial hash value
+
+        unchecked
+        {
+            // Combine hash codes of all elements in the matrix
+            for (int i = 0; i < entries.GetLength(0); i++)
+            {
+                for (int j = 0; j < entries.GetLength(1); j++)
+                {
+                    hash = hash * 31 + entries[i, j].GetHashCode();
+                }
+            }
+        }
+
+        return hash;
+    }
 }

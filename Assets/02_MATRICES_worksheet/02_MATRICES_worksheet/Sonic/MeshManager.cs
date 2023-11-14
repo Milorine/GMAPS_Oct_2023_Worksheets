@@ -25,14 +25,4 @@ public class MeshManager : MonoBehaviour
         vertices = clonedMesh.vertices;
         triangles = clonedMesh.triangles;
     }
-
-    void Translate(float x,float y)
-    {
-        //your code here .SetIdentity();
-        // your code here .SetTranslationMatrix();
-
-        Transfom();
-
-        pos = transformationMatrix * pos;
-    }
 }

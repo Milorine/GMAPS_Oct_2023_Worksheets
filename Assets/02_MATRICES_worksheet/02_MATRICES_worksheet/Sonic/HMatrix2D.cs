@@ -101,8 +101,8 @@ public class HMatrix2D
    public static HVector2D operator *(HMatrix2D left, HVector2D right)
 {
     return new HVector2D(
-        left.entries[0, 0] * right.x + left.entries[0, 1] * right.y,
-        left.entries[1, 0] * right.x + left.entries[1, 1] * right.y 
+        left.entries[0, 0] * right.x + left.entries[0, 1] * right.y + left.entries[0,2] * right.h,
+        left.entries[1, 0] * right.x + left.entries[1, 1] * right.y + left.entries[1,2] * right.h
     );
 }
    public static HMatrix2D operator *(HMatrix2D left, HMatrix2D right)
@@ -199,35 +199,30 @@ public class HMatrix2D
 
    public void SetIdentity()
    {
-       entries = new float[,]
-    {
-        { 1.0f, 0.0f, 0.0f },
-        { 0.0f, 1.0f, 0.0f },
-        { 0.0f, 0.0f, 1.0f }
-    };
+       for (int y = 0; y < 3; y++)
+       {
+            for (int x = 0; x < 3; x++)
+            {  
+                entries[y, x] = x == y ? 1.0f : 0.0f;
+            }
+       }
    }
 
    public void SetTranslationMatrix(float transX, float transY)
    {
-       entries = new float[,]
-    {
-        { 1.0f, 0.0f, transX },
-        { 0.0f, 1.0f, transY },
-        { 0.0f, 0.0f, 1.0f }
-    };
+       SetIdentity();
+       entries[0, 2] = transX;
+       entries[1, 2] = transY;
    }
 
    public void SetRotationMatrix(float rotDeg)
    {
        SetIdentity();
-        float rad = rotDeg * (float)Math.PI / 180.0f;
-        float cosTheta = (float)Math.Cos(rad);
-        float sinTheta = (float)Math.Sin(rad);
-
-        entries[0, 0] = cosTheta;
-        entries[0, 1] = -sinTheta;
-        entries[1, 0] = sinTheta;
-        entries[1, 1] = cosTheta;
+       float rad = rotDeg * Mathf.Deg2Rad;
+       entries[0, 0] = MathF.Cos(rad);
+       entries[0, 1] = -MathF.Sin(rad);
+       entries[1, 0] = MathF.Sin(rad);
+       entries[1, 1] = MathF.Cos(rad);
    }
 
    public void SetScalingMatrix(float scaleX, float scaleY)

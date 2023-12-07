@@ -233,6 +233,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: right_wall
       objectReference: {fileID: 0}
+    - target: {fileID: 8217977701303458181, guid: 0b668542a32e2db439880d5b218fc3ee, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8217977701303458181, guid: 0b668542a32e2db439880d5b218fc3ee, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b668542a32e2db439880d5b218fc3ee, type: 3}
@@ -378,6 +386,14 @@ PrefabInstance:
     - target: {fileID: 670770361360249152, guid: 22637b696c9194848b8fc334acea89ae, type: 3}
       propertyPath: CoeffRestitution
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 670770361360249154, guid: 22637b696c9194848b8fc334acea89ae, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 670770361360249154, guid: 22637b696c9194848b8fc334acea89ae, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1779173185
       objectReference: {fileID: 0}
     - target: {fileID: 670770361360249155, guid: 22637b696c9194848b8fc334acea89ae, type: 3}
       propertyPath: m_RootOrder
@@ -622,6 +638,14 @@ PrefabInstance:
     - target: {fileID: 3692041647850361443, guid: 0b668542a32e2db439880d5b218fc3ee, type: 3}
       propertyPath: m_Name
       value: left_wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 8217977701303458181, guid: 0b668542a32e2db439880d5b218fc3ee, type: 3}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8217977701303458181, guid: 0b668542a32e2db439880d5b218fc3ee, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []

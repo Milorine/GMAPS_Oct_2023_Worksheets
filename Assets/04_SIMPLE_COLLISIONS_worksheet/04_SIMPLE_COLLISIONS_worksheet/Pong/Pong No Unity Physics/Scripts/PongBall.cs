@@ -9,6 +9,7 @@ namespace pool
         //
         public float speedX = 4.0f;
         public float speedY = 2.0f;
+        [SerializeField] private AudioSource bounceEffect;
 
         // The ball is actually a square Sprite with the image of a circle.
         // ballTop, etc., are declared to make the HandleBoundaryCollision
@@ -81,6 +82,7 @@ namespace pool
                 }
                 transform.position = new Vector3(xpos, transform.position.y, transform.position.z);
                 speedX = -speedX;
+                bounceEffect.Play();
             }
 
             // Check for collision with left wall
@@ -96,6 +98,7 @@ namespace pool
                 }
                 transform.position = new Vector3(xpos, transform.position.y, transform.position.z);
                 speedX = -speedX;
+                bounceEffect.Play();
             }
 
             // Check for collision with top wall
@@ -104,6 +107,7 @@ namespace pool
                 ypos = topWall.transform.position.y - wallOffset - radius;
                 transform.position = new Vector3(transform.position.x, ypos, transform.position.z);
                 speedY = -speedY;
+                bounceEffect.Play();
             }
 
             // Check for collision with bottom wall
@@ -112,6 +116,7 @@ namespace pool
                 ypos = bottomWall.transform.position.y + wallOffset + radius;
                 transform.position = new Vector3(transform.position.x, ypos, transform.position.z);
                 speedY = -speedY;
+                bounceEffect.Play();
             }
         }
 
@@ -141,7 +146,7 @@ namespace pool
         }
 
         void FixedUpdate()
-        {
+        {   
             Debug.DrawLine(lastpos, transform.position, Color.red, 5f);
             lastpos = transform.position;
 
